@@ -1,0 +1,17 @@
+.carousel-main {
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel-main::-webkit-scrollbar {
+  height: 0;
+}
+
+.carousel-content {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-auto-flow: column;
+  margin: auto;
+  box-sizing: border-box;
+}
