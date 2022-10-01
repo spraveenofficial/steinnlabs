@@ -10,9 +10,11 @@ const Carousel = ({ name, title }) => {
     <div ref={ref}>
       <div className="flex justify-between items-center text-center">
         <h1 className="text-xl font-bold">{title}</h1>
-    
         <div className="flex">
-          <button className="carousel-prev opacity-[0.1] text-blue-700" onClick={prev}>
+          <button
+            className="carousel-prev opacity-[0.1] text-blue-700"
+            onClick={prev}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -30,7 +32,8 @@ const Carousel = ({ name, title }) => {
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              fill="currentColor"            >
+              fill="currentColor"
+            >
               <path fill="none" d="M0 0h24v24H0V0z" />
               <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
             </svg>

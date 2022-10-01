@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PageWrapper } from "../../components";
 import { useAuth } from "../../context/auth.context";
 import { loadProfile } from "../../https/auth-actions";
-import { useNavigate } from "react-router-dom";
+
+// Login Page Component
 
 const Login = () => {
   const urlParams = new URLSearchParams(window.location.search).get("code");
+  const [loading, setLoading] = useState(false);
   const { dispatch } = useAuth();
-  const navigate = useNavigate();
 
   // Function to redirect to spotify login page
   const handleLoginWithSpotify = async () => {
-    const client_id = "49efd61943bc4778926d0814ad65ae37";
-    const redirect_uri = "http://127.0.0.1:5173/login";
+    setLoading(true);
+    const client_id = import.meta.env.VITE_SPOITFY_CLIENT_ID;
+    const redirect_uri = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
     const api_uri = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-private",
@@ -30,8 +32,9 @@ const Login = () => {
 
   // This is basically Callback function which will be called after spotify login
   const getAccessToken = async () => {
-    const client_id = "49efd61943bc4778926d0814ad65ae37";
-    const client_secret = "55d792c8b786454ca0fa0461df965500";
+    setLoading(true);
+    const client_id = import.meta.env.VITE_SPOITFY_CLIENT_ID;
+    const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
     const redirect_uri = "http://127.0.0.1:5173/login";
 
     const api_uri = "https://accounts.spotify.com/api/token";
@@ -48,9 +51,9 @@ const Login = () => {
       window.localStorage.setItem("access_token", data.access_token);
       window.localStorage.setItem("refresh_token", data.refresh_token);
       loadProfile(dispatch);
-      // navigate("/");
+      window.history.pushState({}, null, "/");
     }
-    window.history.pushState({}, null, "/");
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -65,9 +68,9 @@ const Login = () => {
         <div className="border">
           <button
             onClick={handleLoginWithSpotify}
-            className="p-4 rounded-lg font-bold bg-blue-600"
+            className="p-4 rounded-lg font-bold bg-blue-600 text-white"
           >
-            Login With Spotify
+            {loading ? "Loading..." : "Login with Spotify"}
           </button>
         </div>
       </div>
