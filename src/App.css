@@ -96,7 +96,6 @@ acronym {
   box-sizing: border-box;
 }
 
-
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -157,3 +156,4 @@ acronym {
   display: inline-block;
   overflow: hidden;
 }
+

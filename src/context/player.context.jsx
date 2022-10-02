@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { useAuth } from "./auth.context";
 
 const PlayerContext = createContext();
 
@@ -73,12 +74,12 @@ const PlayerProvider = ({ children }) => {
       shuffle: false,
     }
   );
-
+  const { isAuthenticated } = useAuth();
   return (
     <PlayerContext.Provider value={{ state, dispatch }}>
       {children}
-      {!state.playing ? (
-        <div className="drop-shadow-sm fixed bottom-0 left-[13rem] right-0 bg-teal-50 p-2 flex justify-between items-center">
+      {isAuthenticated && !state.playing ? (
+        <div className="drop-shadow-md fixed bottom-0 mobile:left-12 left-[13rem] right-0 bg-teal-50 p-2 flex justify-between items-center">
           <div className="flex items-center">
             <img
               src="https://i.scdn.co/image/ab67616d0000b27339fe640ab73db368eeac0f90"
