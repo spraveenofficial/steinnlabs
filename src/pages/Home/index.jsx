@@ -24,7 +24,8 @@ const Home = () => {
       .then((res) => res.data.categories.items);
     return Promise.all([topSong, featuredPlaylists, categories]);
   }
-  const fetchTopOfWeek = async () => {
+
+  const fetchSongs = () => {
     myFetcher()
       .then((data) => {
         setState({
@@ -47,7 +48,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchTopOfWeek();
+    fetchSongs();
   }, []);
 
   return (

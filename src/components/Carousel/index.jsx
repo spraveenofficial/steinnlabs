@@ -9,7 +9,8 @@ const Carousel = ({ name, title, type }) => {
   return (
     <div ref={ref}>
       <div className="flex justify-between items-center text-center">
-        <h1 className="text-xl font-bold">{title}</h1>
+        <h1 className="text-xl font-bold text-gray-500">{title}</h1>
+        <div className="w-full flex-1 mx-2 h-[1px] bg-gray-500 rounded-full relative"></div>
         <div className="flex">
           <button
             className="carousel-prev opacity-[0.1] text-blue-700"
