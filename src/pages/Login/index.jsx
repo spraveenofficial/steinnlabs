@@ -35,7 +35,7 @@ const Login = () => {
     setLoading(true);
     const client_id = import.meta.env.VITE_SPOITFY_CLIENT_ID;
     const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
-    const redirect_uri = "http://127.0.0.1:5173/login";
+    const redirect_uri = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
 
     const api_uri = "https://accounts.spotify.com/api/token";
     const response = await fetch(api_uri, {
