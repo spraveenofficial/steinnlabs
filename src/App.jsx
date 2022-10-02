@@ -6,9 +6,11 @@ import { ProtectedRoutes, GuestRoutes } from "./utils/router";
 
 function App() {
   const { loading } = useAuth();
+  
   if (loading) {
     return <div>Loading...</div>;
   }
+  
   return (
     <Router>
       <Routes>

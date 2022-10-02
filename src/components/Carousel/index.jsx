@@ -3,7 +3,7 @@ import { setCorousel } from "../../hooks/carousel";
 import { SongCard } from "../SongCard";
 import "./style.css";
 
-const Carousel = ({ name, title }) => {
+const Carousel = ({ name, title, type }) => {
   const ref = useRef();
   const { next, prev } = setCorousel(ref);
   return (
@@ -45,7 +45,15 @@ const Carousel = ({ name, title }) => {
           <div className="carousel-main overflow-auto scroll-smooth scroll">
             <div className="carousel-content">
               {name.map((item, id) => {
-                return <SongCard key={id} {...item} />;
+                if (type === "songs") {
+                  return (
+                    <SongCard key={id} name={item.name} images={item.images} />
+                  );
+                } else {
+                  return (
+                    <SongCard key={id} name={item.name} images={item.icons} />
+                  );
+                }
               })}
             </div>
           </div>

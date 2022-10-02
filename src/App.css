@@ -135,7 +135,7 @@ acronym {
 .homepage-items {
   grid-area: main;
   max-width: calc(100vw - 205px);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 @media (max-width: 767px) {
